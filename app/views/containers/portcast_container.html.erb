@@ -1,0 +1,210 @@
+<h1>Container Info (Last updated at <%= @container.container_datas.last.updated_at.getlocal%> from Portcast)</h1>
+<table style="width:100%">
+  <tr>
+    <th>Number</th>
+    <th>Type</th>
+    <th>Bill Number</th>
+    <th>Carrier Name</th>
+    <th>Carrier SCAC</th>
+    <th>Weight</th>
+    <th>Size</th>
+  </tr>
+  
+  <tr>
+    <td><%= @container.number %></td>
+    <td><%= @container.container_type %></td>
+    <td><%= @container.bill_number %></td>
+    <td><%= @container.carrier_name%></td>
+    <td><%= @container.carrier_scac %></td>
+    <td><%= @container.weight %></td>
+    <td><%= @container.size%> </td>
+    
+  </tr>
+  </table>
+
+<h1>Vessels Info </h1>
+<table style="width:100%">
+  <tr>
+    <th>Number</th>
+    <th>Name</th>
+    <th>IMO</th>
+    <th>Target Port Code</th>
+    <th>Target Port Name</th>
+    <th>Status</th>
+    <th>Status Code</th>
+    <!-- th>Ais</th> -->
+  </tr>
+  <%@container.vessels.each do |v|%>
+    <tr>
+      <td><%= v.number %></td>
+      <td><%= v.name %></td>
+      <td><%= v.imo%></td>
+      <td><%= v.target_port_code %></td>
+      <td><%= v.target_port_name %></td>
+      <td><%= v.status%></td>
+      <td><%= v.status_code %></td>
+      <!-- <td><%#= v.ais %></td> -->
+      
+      
+    </tr>
+  <%end%>
+</table>
+
+<h1>Vessel Logs</h1>
+<table style="width:100%">
+  <tr>
+    <th>IMO</th>
+    <th>Time</th>
+    <th>Log</th>
+  </tr>
+
+  <% @container.vessels.each do |v| %>
+    <% v.vessel_logs.each do |l|%>
+      <tr>
+        <td><%= v.imo %></td>
+        <td><%= l.created_at.getlocal %></td>
+        <td><%= l.log %></td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>
+
+<h1>Container Locations Info</h1>
+<table style="width:100%">
+  <tr>
+    <th>Type</th>
+    <th>Code</th>
+    <th>Name</th>
+    <th>Raw</th>
+    <th>Port Code</th>
+    <th>Port Name</th>
+    <th>Event Raw</th>
+    <th>Event time</th>
+    <th>Event Type Code</th>
+    <th>Event Type Name</th>
+  </tr>
+  <%@container.locations.each do |l|%>
+    <tr>
+      <td><%= l.location_type_name %></td>
+      <td><%= l.code %></td>
+      <td><%= l.name %></td>
+      <td><%= l.raw%></td>
+      
+      <td><%= l.port_code %></td>
+      <td><%= l.port_name %></td>
+      <td><%= l.event_raw %></td>
+      <td><%= l.event_time%></td>
+      <td><%= l.event_type_code%></td>
+      <td><%= l.event_type_name%></td>
+    </tr>
+
+  <%end%>
+</table>
+
+<h1>Container Location Timelines </h1>
+<table style="width:100%">
+  <tr>
+    <th>Location Type</th>
+    <th>Event Type</th>
+    <th>Expected Time</th>
+    <th>Actual Time</th>
+    <th>Detected Time</th>
+    <th>Initial Time</th>
+
+  </tr>
+  <%@container.locations.each do |l|%>
+    <% l.location_timelines.each do |lt| %>
+      <tr>
+        <td><%= l.location_type_name %></td>
+        <td><%= lt.timeline_type %></td>
+        <td><%= lt.expected_time%></td>
+        <td><%= lt.actual_time %></td>
+        <td><%= lt.detected_time %></td>
+        <td><%= lt.initial_time%></td>
+      </tr>
+    <%end%>
+  <%end%>
+</table>
+
+
+
+<h1>Vessel Locations Info</h1>
+<table style="width:100%">
+  <tr>
+    <th>Type</th>
+    <th>Code</th>
+    <th>Name</th>
+    <th>Raw</th>
+    <th>Port Code</th>
+    <th>Port Name</th>
+    <th>Event Raw</th>
+    <th>Event time</th>
+    <th>Event Type Code</th>
+    <th>Event Type Name</th>
+  </tr>
+  <%@container.vessels.each do |v|%>
+    <% v.locations.each do |l|%>
+    <tr>
+      <td><%= l.location_type_name %></td>
+      <td><%= l.code %></td>
+      <td><%= l.name %></td>
+      <td><%= l.raw%></td>
+      
+      <td><%= l.port_code %></td>
+      <td><%= l.port_name %></td>
+      <td><%= l.event_raw %></td>
+      <td><%= l.event_time%></td>
+      <td><%= l.event_type_code%></td>
+      <td><%= l.event_type_name%></td>
+    </tr>
+    <%end%>
+  <%end%>
+</table>
+
+<h1>Vessel Location Timelines </h1>
+<table style="width:100%">
+  <tr>
+    <th>Location Type</th>
+    <th>Event Type</th>
+    <th>Port Code</th>
+    <th>Port Name</th>
+    <th>Expected Time</th>
+    <th>Actual Time</th>
+    <th>Detected Time</th>
+    <th>Initial Time</th>
+
+  </tr>
+  <%@container.vessels.each do |v|%>
+    <%v.locations.each do |l|%>
+      <% l.location_timelines.each do |lt| %>
+        <tr>
+          <td><%= l.location_type_name %></td>
+          <td><%= lt.timeline_type %></td>
+          <td><%= l.port_code %></td>
+          <td><%= l.port_name %></td>
+          <td><%= lt.expected_time%></td>
+          <td><%= lt.actual_time %></td>
+          <td><%= lt.detected_time %></td>
+          <td><%= lt.initial_time%></td>
+        </tr>
+      <%end%>
+    <%end%>
+  <%end%>
+</table>
+
+
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+
+th, td {
+  padding: 10px;
+}
+table {
+  display: table;
+  border-collapse: separate;
+  border-spacing: 2px;
+  border-color: gray;
+}
+</style@container

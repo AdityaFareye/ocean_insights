@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number: MyText
+  container_type: MyText
+  weight: 9.99
+  iso: MyText
+  name: MyText
+  status: MyText
+  carrier_name: MyText
+  carrier_scac: MyText
+
+two:
+  number: MyText
+  container_type: MyText
+  weight: 9.99
+  iso: MyText
+  name: MyText
+  status: MyText
+  carrier_name: MyText
+  carrier_scac: MyText

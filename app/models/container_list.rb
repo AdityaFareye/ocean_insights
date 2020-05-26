@@ -1,0 +1,2 @@
+class ContainerList < ApplicationRecord
+end

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  code: MyText
+  key: MyText
+  shipment_id: MyText
+
+two:
+  code: MyText
+  key: MyText
+  shipment_id: MyText

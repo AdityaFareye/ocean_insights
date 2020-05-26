@@ -1,0 +1,144 @@
+<div class="tab">
+	<button class="tablinks" onclick="openCity(event, 'ocean')" id="defaultOpen">Ocean Insights</button>
+  <button class="tablinks" onclick="openCity(event, 'portcast')">Portcast</button>
+</div>
+<div id="ocean" class="tabcontent">
+	<h1>Ocean Insights</h1>
+	<table style="width:100%">
+	  <tr>
+	    <th>Number</th>
+	    <th>Type</th>
+	    <th>ISO</th>
+	    <th>Carrier Name</th>
+	    <th>Carrier SCAC</th>
+	    <th>Name</th>
+	    <th>Weight</th>
+	  </tr>
+	  <% @containers.each do |c| %>
+		  <tr>
+		    <td><a href="/containers/<%=c.number%>"><%= c.number %></a></td>
+		    <td><%= c.container_type %></td>
+		    <td><%= c.iso %></td>
+		    <td><%= c.carrier_name%></td>
+		    <td><%= c.carrier_scac %></td>
+		    <td><%= c.name %></td>
+		    <td><%= c.weight%></td>
+		    
+		  </tr>
+	  <%end%>
+	</table>
+</div>
+<div id="portcast" class="tabcontent">
+
+	<h1>Portcast</h1>
+	<table style="width:100%">
+	  <tr>
+	    <th>Number</th>
+	    <th>Type</th>
+	    <th>Bill Number</th>
+	    <th>Carrier Name</th>
+	    <th>Carrier SCAC</th>
+	    <th>Weight</th>
+	    <th>Size</th>
+	  </tr>
+	  <% @portcast_containers.each do |c| %>
+		  <tr>
+	      <td><a href="/portcast_container_detail/<%=c.number%>"><%= c.number %></a></td>
+		    <!-- <td><%#= c.number %></td> -->
+		    <td><%= c.container_type %></td>
+		    <td><%= c.bill_number %></td>
+		    <td><%= c.carrier_name%></td>
+		    <td><%= c.carrier_scac %></td>
+	      <td><%= c.weight %></td>
+		    <td><%= c.size%> </td>
+		    
+		  </tr>
+	  <%end%>
+	</table>
+
+	</div>
+<style>
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+
+table, th, td {
+  border: 1px solid black;
+}
+
+th, td {
+  padding: 10px;
+}
+table {
+  display: table;
+  border-collapse: separate;
+  border-spacing: 2px;
+  border-color: gray;
+}
+
+.tabcontent {
+  animation: fadeEffect 1s; /* Fading effect takes 1 second */
+}
+
+/* Go from zero to full opacity */
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+</style>
+
+<script type="text/javascript">
+	document.getElementById("defaultOpen").click();
+	function openCity(evt, cityName) {
+  // Declare all variables
+  var i, tabcontent, tablinks;
+
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>

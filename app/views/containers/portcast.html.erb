@@ -1,0 +1,41 @@
+<h1>Portcast</h1>
+<table style="width:100%">
+  <tr>
+    <th>Number</th>
+    <th>Type</th>
+    <th>Bill Number</th>
+    <th>Carrier Name</th>
+    <th>Carrier SCAC</th>
+    <th>Weight</th>
+    <th>Size</th>
+  </tr>
+  <% @containers.each do |c| %>
+	  <tr>
+      <td><a href="/portcast_container_detail/<%=c.number%>"><%= c.number %></a></td>
+	    <!-- <td><%#= c.number %></td> -->
+	    <td><%= c.container_type %></td>
+	    <td><%= c.bill_number %></td>
+	    <td><%= c.carrier_name%></td>
+	    <td><%= c.carrier_scac %></td>
+      <td><%= c.weight %></td>
+	    <td><%= c.size%> </td>
+	    
+	  </tr>
+  <%end%>
+</table>
+
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+
+th, td {
+  padding: 10px;
+}
+table {
+  display: table;
+  border-collapse: separate;
+  border-spacing: 2px;
+  border-color: gray;
+}
+</style>

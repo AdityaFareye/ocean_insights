@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  initial_time: MyText
+  last_time: MyText
+  expected_time: MyText
+  actual_time: MyText
+  detected_time: MyText
+
+two:
+  initial_time: MyText
+  last_time: MyText
+  expected_time: MyText
+  actual_time: MyText
+  detected_time: MyText

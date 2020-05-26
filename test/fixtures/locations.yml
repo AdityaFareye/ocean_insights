@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  location_type: 1
+  code: MyText
+  raw: MyText
+  location_type_name: MyText
+  port_code: MyText
+  port_name: MyText
+  lat: MyText
+  long: MyText
+  timezoe: MyText
+
+two:
+  location_type: 1
+  code: MyText
+  raw: MyText
+  location_type_name: MyText
+  port_code: MyText
+  port_name: MyText
+  lat: MyText
+  long: MyText
+  timezoe: MyText
