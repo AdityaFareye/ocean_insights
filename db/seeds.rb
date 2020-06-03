@@ -25,30 +25,41 @@
 # ContainerList.create(code: 'msc', key: 'TGHU8388965')
 
 
-ContainerList.find_by(key: 'INKU2206688').update(bill_of_lading: 'MEDUMH423003')
-ContainerList.find_by(key: 'MSCU7565556').update(bill_of_lading: 'MEDUMH160886')
-ContainerList.find_by(key: 'MEDU7286028').update(bill_of_lading: 'MEDUMH236421')
-ContainerList.find_by(key: 'TGHU8744623').update(bill_of_lading: 'MEDUMH210939')
-ContainerList.find_by(key: 'CARU9947605').update(bill_of_lading: 'MEDUMH236355')
-ContainerList.find_by(key: 'FCIU6580375').update(bill_of_lading: 'MEDUMH308832')
-ContainerList.find_by(key: 'GLDU7561874').update(bill_of_lading: 'MEDUMH210384')
-ContainerList.find_by(key: 'CAXU6394590').update(bill_of_lading: 'MEDUMH366145')
-ContainerList.find_by(key: 'TCKU3850610').update(bill_of_lading: 'MEDUMH308857')
-ContainerList.find_by(key: 'CAIU8643983').update(bill_of_lading: 'MEDUMH210137')
-ContainerList.find_by(key: 'MSCU8490214').update(bill_of_lading: 'MEDUMH263995')
-ContainerList.find_by(key: 'BMOU4441808').update(bill_of_lading: 'MEDUMH308675')
-ContainerList.find_by(key: 'CAIU4758393').update(bill_of_lading: 'MEDUMH393826')
-ContainerList.find_by(key: 'INKU6163054').update(bill_of_lading: 'MEDUMH209402')
-ContainerList.find_by(key: 'TRLU7098426').update(bill_of_lading: 'MEDUMH465897')
-ContainerList.find_by(key: 'INKU6727196').update(bill_of_lading: 'MEDUMH353267')
-ContainerList.find_by(key: 'INKU6570337').update(bill_of_lading: 'MEDUMH348820')
-ContainerList.find_by(key: 'MSCU7889684').update(bill_of_lading: 'MEDUMH232222')
-ContainerList.find_by(key: 'TGHU8785704').update(bill_of_lading: 'MEDUMH393859')
-ContainerList.find_by(key: 'MSCU7888651').update(bill_of_lading: 'MEDUMH210822')
-ContainerList.find_by(key: 'INKU2868982').update(bill_of_lading: 'MEDUMH376557')
-ContainerList.find_by(key: 'INKU6357810').update(bill_of_lading: 'MEDUMH371541')
-ContainerList.find_by(key: 'CAIU7014055').update(bill_of_lading: 'MEDUMH393792')
-ContainerList.find_by(key: 'MEDU8344279').update(bill_of_lading: 'MEDUMH264159')
-ContainerList.find_by(key: 'TGHU8388965').update(bill_of_lading: 'MEDUMH376490')
+# ContainerList.find_by(key: 'INKU2206688').update(bill_of_lading: 'MEDUMH423003')
+# ContainerList.find_by(key: 'MSCU7565556').update(bill_of_lading: 'MEDUMH160886')
+# ContainerList.find_by(key: 'MEDU7286028').update(bill_of_lading: 'MEDUMH236421')
+# ContainerList.find_by(key: 'TGHU8744623').update(bill_of_lading: 'MEDUMH210939')
+# ContainerList.find_by(key: 'CARU9947605').update(bill_of_lading: 'MEDUMH236355')
+# ContainerList.find_by(key: 'FCIU6580375').update(bill_of_lading: 'MEDUMH308832')
+# ContainerList.find_by(key: 'GLDU7561874').update(bill_of_lading: 'MEDUMH210384')
+# ContainerList.find_by(key: 'CAXU6394590').update(bill_of_lading: 'MEDUMH366145')
+# ContainerList.find_by(key: 'TCKU3850610').update(bill_of_lading: 'MEDUMH308857')
+# ContainerList.find_by(key: 'CAIU8643983').update(bill_of_lading: 'MEDUMH210137')
+# ContainerList.find_by(key: 'MSCU8490214').update(bill_of_lading: 'MEDUMH263995')
+# ContainerList.find_by(key: 'BMOU4441808').update(bill_of_lading: 'MEDUMH308675')
+# ContainerList.find_by(key: 'CAIU4758393').update(bill_of_lading: 'MEDUMH393826')
+# ContainerList.find_by(key: 'INKU6163054').update(bill_of_lading: 'MEDUMH209402')
+# ContainerList.find_by(key: 'TRLU7098426').update(bill_of_lading: 'MEDUMH465897')
+# ContainerList.find_by(key: 'INKU6727196').update(bill_of_lading: 'MEDUMH353267')
+# ContainerList.find_by(key: 'INKU6570337').update(bill_of_lading: 'MEDUMH348820')
+# ContainerList.find_by(key: 'MSCU7889684').update(bill_of_lading: 'MEDUMH232222')
+# ContainerList.find_by(key: 'TGHU8785704').update(bill_of_lading: 'MEDUMH393859')
+# ContainerList.find_by(key: 'MSCU7888651').update(bill_of_lading: 'MEDUMH210822')
+# ContainerList.find_by(key: 'INKU2868982').update(bill_of_lading: 'MEDUMH376557')
+# ContainerList.find_by(key: 'INKU6357810').update(bill_of_lading: 'MEDUMH371541')
+# ContainerList.find_by(key: 'CAIU7014055').update(bill_of_lading: 'MEDUMH393792')
+# ContainerList.find_by(key: 'MEDU8344279').update(bill_of_lading: 'MEDUMH264159')
+# ContainerList.find_by(key: 'TGHU8388965').update(bill_of_lading: 'MEDUMH376490')
+
+
+ContainerList.create(code: 'ONEY', key: 'BSIU2963780', bill_of_lading: 'ONEYCCUA03410300')
+ContainerList.create(code: 'ONEY', key: 'NYKU0825274', bill_of_lading: 'ONEYCCUA03618600')
+ContainerList.create(code: 'HLCU', key: 'BMOU1443598', bill_of_lading: 'HLCUMA3200524161')
+ContainerList.create(code: '', key: 'UETU2582936', bill_of_lading: 'CMDUCAD0413407') # CMA CGM 
+ContainerList.create(code: '', key: 'CAIU7627118', bill_of_lading: 'CMDUCAD0413402') # CMA CGM
+
+
+
+
 
 
