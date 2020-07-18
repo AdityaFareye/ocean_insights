@@ -120,6 +120,117 @@
 </table>
 
 
+
+<table style="width:100"%>
+  <tr>
+    <th>Key Name</th>
+    <th>Definition</th>
+  </tr>
+
+  <tr>
+    <td>pod_vslarrival_detected</td>
+    <td>Actual date/time of vessel arrival at final port of discharge (detected by AIS vessel tracking)</td>
+  </tr>
+  <tr>
+    <td>pod_vslarrival_actual</td>
+    <td>Actual date/time of vessel arrival at final port of discharge (indicated by the carrier)</td>
+  </tr>
+  <tr>
+    <td>pod_vslarrival_planned_initial</td>
+    <td>Initial planned date/time of vessel arrival at final port of discharge (indicated by the carrier)
+
+</td>
+  </tr>
+  <tr>
+    <td>pod_vslarrival_planned_last</td>
+    <td>Last (i.e. most recent) given planned date/time of vessel arrival at final port of discharge (indicated by the carrier)</td>
+  </tr>
+  <tr>
+    <td>pod_discharge_actual</td>
+    <td>Actual date/time of container discharge at final port of discharge (indicated by the carrier)</td>
+  </tr>
+  <tr>
+    <td>pod_discharge_planned_initial</td>
+    <td>Initial planned date/time of container discharge at final port of discharge (indicated by the carrier)</td>
+  </tr>
+  <tr>
+    <td>pod_discharge_planned_last</td>
+    <td>Last (i.e. most recent) given planned date/time of container discharge at final port of discharge (indicated by the carrier)</td>
+  </tr>
+  <tr>
+    <td>pod_departure_actual</td>
+    <td>Actual date/time of container departure at final port of discharge (indicated by the carrier)</td>
+  </tr>
+  <tr>
+    <td>pod_departure_planned_initial</td>
+    <td>Initial planned date/time of container departure at final port of discharge (indicated by the carrier)
+
+</td>
+  </tr>
+  <tr>
+    <td>pod_departure_planned_last</td>
+    <td>Last (i.e. most recent) given planned date/time of container departure at final port of discharge (indicated by the carrier)</td>
+  </tr>
+
+</table>
+<% h = {}%>
+
+<table style="width:100%">
+  <tr>
+    <th>Datetime</th>
+    <th> pod_vslarrival_prediction </th>
+    <th >pod_vslarrival_detected </th>
+    <th >pod_vslarrival_actual</th>
+    <th>pod_vslarrival_planned_initial</th>
+    <th>pod_vslarrival_planned_last</th>
+    <th>pod_discharge_actual</th>
+    <th>pod_discharge_planned_initial</th>
+    <th>pod_discharge_planned_last</th>
+    <th>pod_departure_actual</th>
+    <th>pod_departure_planned_initial</th>
+    <th>pod_departure_planned_last</th>
+  </tr>
+  <% @container.container_datas.each do |x| %>
+  <tr>
+      
+      <% date = x.created_at %>
+      <% data =  eval(x.data) %>
+      <% containershipments = data['containershipments'] %>
+      <% containershipments.each do |y| %>
+        <td><%= date %></td>
+	<td> <%= y['pod_vslarrival_prediction']%></td>
+        <td> <%= y['pod_vslarrival_detected'] %> </td>
+        <td> <%= y['pod_vslarrival_actual'] %> </td>
+        <td> <%= y['pod_vslarrival_planned_initial'] %> </td>
+        <td> <%= y['pod_vslarrival_planned_last'] %> </td>
+        <td> <%= y['pod_discharge_actual'] %> </td>
+        <td> <%= y['pod_discharge_planned_initial'] %> </td>
+        <td> <%= y['pod_discharge_planned_last'] %> </td>
+        <td> <%= y['pod_departure_actual'] %> </td>
+        <td> <%= y['pod_departure_planned_initial'] %> </td>
+        <td> <%= y['pod_departure_planned_last'] %> </td>
+
+      <% end %>
+    
+  </tr>
+  <% end %>
+</table>
+
+
+<h1> POD ETA updation timeline </h1>
+<table style="width:100%">
+  <tr>
+    <th>Datetime of ETA updation</th>
+    <th>ETA</th>
+  </tr>
+  <% @final_hash.each do |k,v|%>
+    <tr>
+      <td> <%= v %></td>
+      <td> <%= k %></td>
+    </tr>
+  <% end %>
+</table>
+
 <style>
 table, th, td {
   border: 1px solid black;

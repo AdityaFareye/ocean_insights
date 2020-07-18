@@ -127,7 +127,6 @@
 </table>
 
 
-
 <h1>Vessel Locations Info</h1>
 <table style="width:100%">
   <tr>
@@ -193,6 +192,101 @@
 </table>
 
 
+
+<table style="width:100%">
+  <tr>
+    <th>Datetime</th>
+    <th>pod_predicted_arrival_lt </th>
+    <th>pod_scheduled_arrival_lt</th>
+    <th>pod_actual_arrival_lt</th>
+
+    <th>pod_predicted_departure_lt</th>
+    <th>pod_scheduled_departure_lt</th>
+    <th>pod_actual_departure_lt</th>
+
+    
+    <th>pod_predicted_discharge_lt</th>
+    <th>pod_scheduled_discharge_lt</th>
+    <th>pod_actual_discharge_lt</th>
+
+  </tr>
+  <% @container.container_datas.each do |x| %>
+  <tr>
+      
+      <% date = x.created_at %>
+      <% data =  eval(x.data) %>
+      <% containershipments = data['bill_of_lading'] %>
+      <%# containershipments.each do |z| %>
+        <% y =containershipments %>
+
+        <td><%= date %></td>
+        <td> <%= y['pod_predicted_arrival_lt'] %> </td>
+        <td> <%= y['pod_scheduled_arrival_lt'] %> </td>
+        <td> <%= y['pod_actual_arrival_lt'] %> </td>
+
+        <td> <%= y['pod_predicted_departure_lt'] %> </td>
+        <td> <%= y['pod_scheduled_departure_lt'] %> </td>
+        <td> <%= y['pod_actual_departure_lt'] %> </td>
+
+        <td> <%= y['pod_predicted_discharge_lt'] %> </td>
+        <td> <%= y['pod_scheduled_discharge_lt'] %> </td>
+        <td> <%= y['pod_actual_discharge_lt'] %> </td>
+        
+        
+        
+      <%# end %>
+    
+  </tr>
+  <% end %>
+  
+</table>
+
+
+
+<h1> POD ETA(Arrival) updation timeline </h1>
+<table style="width:100%">
+  <tr>
+    <th>Datetime of ETA(Arrival) updation</th>
+    <th>ETA(Arrival)</th>
+  </tr>
+  <% @pod_predicted_arrival_hash.each do |k,v|%>
+    <tr>
+      <td> <%= v %></td>
+      <td> <%= k %></td>
+    </tr>
+  <% end %>
+</table>
+
+
+<h1> POD ETA(Departure) updation timeline </h1>
+<table style="width:100%">
+  <tr>
+    <th>Datetime of ETA(Departure) updation</th>
+    <th>ETA(Departure)</th>
+  </tr>
+  <% @pod_predicted_departure_hash.each do |k,v|%>
+    <tr>
+      <td> <%= v %></td>
+      <td> <%= k %></td>
+    </tr>
+  <% end %>
+</table>
+
+
+<h1> POD ETA(Discharge) updation timeline </h1>
+<table style="width:100%">
+  <tr>
+    <th>Datetime of ETA(Discharge) updation</th>
+    <th>ETA(Discharge)</th>
+  </tr>
+  <% @pod_predicted_discharge_hash.each do |k,v|%>
+    <tr>
+      <td> <%= v %></td>
+      <td> <%= k %></td>
+    </tr>
+  <% end %>
+</table>
+
 <style>
 table, th, td {
   border: 1px solid black;
@@ -207,4 +301,4 @@ table {
   border-spacing: 2px;
   border-color: gray;
 }
-</style@container
+</style>
