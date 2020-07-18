@@ -5,7 +5,6 @@ class OceanTrackingJob
     shipment_ids.each do |shipment_id|
       result = HTTParty.get("https://capi.ocean-insights.com/containertracking/v2/subscriptions/#{shipment_id}/", 
       :headers => { 'Authorization' => 'Token ee0c7552b680e73d31aaba1fc8f2130a1655fb96'})
-  
       result = result.parsed_response
       containershipments = result['containershipments'][0]
       container_number = containershipments['container_number']
@@ -316,7 +315,7 @@ class OceanTrackingJob
   end
 
   def self.generate_shipment_ids
-    containers = ContainerList.all
+    containers = ContainerList.where("shipment_id is null")
     containers.each do |container|
       begin
         result = HTTParty.post('https://capi.ocean-insights.com/containertracking/v2/subscriptions/', 
@@ -326,7 +325,7 @@ class OceanTrackingJob
           "request_key": container.key
         }.to_json,
       :headers => {'Content-Type' => 'application/json', 'Authorization' => 'Token ee0c7552b680e73d31aaba1fc8f2130a1655fb96'} )
-        
+        p "---- key --- #{container.key} ---- result --- #{result}"
         result = result.parsed_response
         if result 
           url = result["url"]
@@ -463,7 +462,7 @@ class OceanTrackingJob
           container_event_list = obj['container_event_list']
           if container_event_list
             container_event_list.each do |event|
-              loc = con.locations.find_by(location_type_name: event['location_type_code'].try(:downcase))
+              loc = con.locations.find_by(location_type_name: event['location_type_code'].try(:downcase), event_raw: event['event_raw'])
               if loc
                 loc.update(event_raw: event['event_raw'], event_time: event['event_time'], event_type_code: event['event_type_code'], event_type_name: event['event_type_name'], port_code: event['port_code'], port_name: event['port_name'], raw: event['location_raw'])
               else
@@ -477,7 +476,7 @@ class OceanTrackingJob
 
   end
   def self.generate_bill_of_lading_bookmark_ids
-    containers = ContainerList.all
+    containers = ContainerList.where("bill_of_lading_bookmark_id is null")
     containers.each do |container|
       result = HTTParty.post('https://api.portcast.io/api/v1/eta/bill-of-lading-bookmarks',
         :body => {
@@ -485,11 +484,15 @@ class OceanTrackingJob
           "cntr_no": container.key
         }.to_json,
         :headers => {'Content-Type':'application/json', 'Accept':'application/json', 'x-api-key':'PC87B33F7CC106BFFCD9F7BF7434DBFDD2'})
+	p "-------- key ----- #{container.key} ------ result ------ #{result}"
         result = result.parsed_response
+p "-------- key ----- #{container.key} ------ parsed_response ------ #{result}"
       if result 
         obj = result["obj"]
+	p "-------- key ----- #{container.key} ------ obj ------ #{obj}"
         if obj
           id = obj['id']
+		p "-------- key ----- #{container.key} ------ id ------ #{id}"
           container.bill_of_lading_bookmark_id = id
           container.save!
         end
