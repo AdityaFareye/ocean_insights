@@ -1,6 +1,8 @@
 <div class="tab">
 	<button class="tablinks" onclick="openCity(event, 'ocean')" id="defaultOpen">Ocean Insights</button>
-  <button class="tablinks" onclick="openCity(event, 'portcast')">Portcast</button>
+  	<button class="tablinks" onclick="openCity(event, 'portcast')">Portcast</button>
+  	<button class="tablinks" onclick="openCity(event, 'ocean_new')">Ocean Insights New</button>
+
 </div>
 <div id="ocean" class="tabcontent">
 	<h1>Ocean Insights</h1>
@@ -28,6 +30,8 @@
 	  <%end%>
 	</table>
 </div>
+
+
 <div id="portcast" class="tabcontent">
 
 	<h1>Portcast</h1>
@@ -55,8 +59,35 @@
 		  </tr>
 	  <%end%>
 	</table>
+</div>
 
-	</div>
+<div id="ocean_new" class="tabcontent">
+	<h1>Ocean Insights New</h1>
+	<table style="width:100%">
+	  <tr>
+	    <th>Number</th>
+	    <th>Type</th>
+	    <th>ISO</th>
+	    <th>Carrier Name</th>
+	    <th>Carrier SCAC</th>
+	    <th>Name</th>
+	    <th>Weight</th>
+	  </tr>
+	  <% @containers.each do |c| %>
+		  <tr>
+		    <td><a href="/containers/<%=c.number%>"><%= c.number %></a></td>
+		    <td><%= c.container_type %></td>
+		    <td><%= c.iso %></td>
+		    <td><%= c.carrier_name%></td>
+		    <td><%= c.carrier_scac %></td>
+		    <td><%= c.name %></td>
+		    <td><%= c.weight%></td>
+		    
+		  </tr>
+	  <%end%>
+	</table>
+</div>
+
 <style>
 .tab {
   overflow: hidden;

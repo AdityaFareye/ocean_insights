@@ -1,7 +1,23 @@
 class OceanTrackingJob
 
+  SHIPMENT_IDS = ['12205304']
+  SUBSCRIPTION_ID = ['14200621']
+  def self.get_geo_tracking_from_ocean_tracking
+    SHIPMENT_IDS.each do |shipment_id|
+      result = HTTParty.get("https://capi.ocean-insights.com/containertracking/v2/shipments/#{shipment_id}/geotrack/", 
+      :headers => { 'Authorization' => 'Token ee0c7552b680e73d31aaba1fc8f2130a1655fb96'})
+      result = result.parsed_response
+      @container_list = ContainerList.find_by(shipment_id: shipment_id)
+      @container = Container.find_by(number: @container_list.key)
+      result.each do |r|
+        
+        OceanInsightGeoTrack.create(track_id: r['id'], transport_mode_verbose: r['transport_mode_verbose'], pos_source_verbose: r['pos_source_verbose'], latitude: r['latitude'], longitude: r['longitude'], vessel_speed_over_ground: r['vessel_speed_over_ground'], vessel_course_over_ground: r['vessel_course_over_ground'], vessel_shipname: r['vessel_shipname'], vessel_callsign: r['vessel_callsign'])
+      end
+    end
+  end
+
   def self.fetch_data_from_ocean_insight
-    shipment_ids = ContainerList.all.map(&:shipment_id)
+    shipment_ids = ContainerList.where(key: 'HLBU2131426').map(&:shipment_id)
     shipment_ids.each do |shipment_id|
       result = HTTParty.get("https://capi.ocean-insights.com/containertracking/v2/subscriptions/#{shipment_id}/", 
       :headers => { 'Authorization' => 'Token ee0c7552b680e73d31aaba1fc8f2130a1655fb96'})

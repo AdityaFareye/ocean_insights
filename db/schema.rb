@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200526104108) do
+ActiveRecord::Schema.define(version: 20200719111259) do
 
   create_table "container_data", force: :cascade do |t|
     t.text     "data"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20200526104108) do
     t.datetime "updated_at",                 null: false
     t.string   "bill_of_lading"
     t.string   "bill_of_lading_bookmark_id"
+    t.string   "subscription_id"
   end
 
   create_table "container_vessels", force: :cascade do |t|
@@ -91,6 +92,20 @@ ActiveRecord::Schema.define(version: 20200526104108) do
     t.text     "event_type_name"
     t.index ["container_id"], name: "index_locations_on_container_id"
     t.index ["vessel_id"], name: "index_locations_on_vessel_id"
+  end
+
+  create_table "ocean_insight_geo_tracks", force: :cascade do |t|
+    t.string   "track_id"
+    t.string   "transport_mode_verbose"
+    t.string   "pos_source_verbose"
+    t.string   "latitude"
+    t.string   "longitude"
+    t.string   "vessel_speed_over_ground"
+    t.string   "vessel_course_over_ground"
+    t.string   "vessel_shipname"
+    t.string   "vessel_callsign"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "vessel_logs", force: :cascade do |t|

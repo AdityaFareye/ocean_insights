@@ -11,7 +11,7 @@ class ContainersController < ApplicationController
 
   def show
     @container = Container.find_by(number: params[:id], source: 'ocean-insights')
-@data = {}
+    @data = {}
     @container.container_datas.each do |x|
       puts ">>>>>>>>> #{x.created_at}"
       date = x.created_at
@@ -24,13 +24,13 @@ class ContainersController < ApplicationController
         end
       end
     end
-	@final_hash = {}
-    puts ">>>>>>>>> #{@data}"
-	@data.each do |k,v|
-  if @final_hash[v].nil?
-   @final_hash[v] = k
+  	@final_hash = {}
+      puts ">>>>>>>>> #{@data}"
+  	@data.each do |k,v|
+    if @final_hash[v].nil?
+     @final_hash[v] = k
+    end
   end
-end
 
 	puts "------------- #{@final_hash}"
   end
